@@ -4,9 +4,6 @@ now = time.strftime("%b %d, %Y %H:%M:%S")
 print("The time is below:")
 print("It is", now)
 
-print(now)
-print("Upload on VSCode")
-
 while True:
     
     # Get user input and strip space chars from it
@@ -21,8 +18,7 @@ while True:
         todos.append(todo + '\n')
         functions.write_todos(todos)
 
-    elif user_action.startswith('show'):
-         
+    elif user_action.startswith('show'):      
         todos = functions.get_todos()
         # new_todos = [item.strip('\b') for item in todos]
             
@@ -36,8 +32,7 @@ while True:
         try:
             number = int(user_action[5:])
             print(number)
-            number = number - 1
-            
+            number = number - 1     
             todos = functions.get_todos()   
             new_todo = input("Enter new to-do: ")
             todos[number] = new_todo + '\n'
