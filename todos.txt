@@ -1,3 +1,5 @@
-janela
-motor
-aspirador
+mouseadormir
+example
+monitorsorvete
+fone de ouvidomonitor
+monitor
