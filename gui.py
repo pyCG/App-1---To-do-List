@@ -11,19 +11,14 @@ list_box = sg.Listbox(values=functions.get_todos(),
                       size=[45, 10])
 
 edit_button = sg.Button("Edit")
+complete_button = sg.Button("Complete")
+exit_button = sg.Button("Exit")
 
-
-button_labels = ["Close", "Apply"]
-'''
-layout = []
-
-for bl in button_labels:
-    layout.append([sg.Button(bl)])
-
-layout = [[label], [input_box, add_button], [list_box, edit_button]]
-'''
 window = sg.Window("My To-Do App", 
-                   layout=[[label], [input_box,add_button], [list_box, edit_button]],
+                   layout=[[label], 
+                           [input_box,add_button], 
+                           [list_box, edit_button, complete_button],
+                           [exit_button]],
                    font=('Helvetica', 20))
 while True:
     event, values = window.read()
@@ -47,8 +42,19 @@ while True:
             todos[index] = new_todo
             functions.write_todos(todos)
             window['todos'].update(values=todos)
+        
+        case "Complete":
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['todo'].update(value='')
+        
+        case "Exit":
+            break
             
-        case 'todos':
+        case "todos":
             window['todo'].update(value=values['todos'][0])
             
         case sg.WIN_CLOSED:

@@ -1,5 +1,4 @@
 mouseadormir
 example
-monitorsorvete
-fone de ouvidomonitor
-monitor
+tecladomonitormouse
+teclado
